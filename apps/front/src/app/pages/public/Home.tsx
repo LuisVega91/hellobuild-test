@@ -38,7 +38,7 @@ const  Home = () => {
 
   return (
     <Page >
-      <Profile viewer={queryResult.viewer} />
+      <Profile viewer={queryResult?.viewer} />
 
       <div className="box pt-6">
         <div className="box-wrapper">

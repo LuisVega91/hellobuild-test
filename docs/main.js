@@ -634,7 +634,7 @@ const Home = () => {
 
   return /*#__PURE__*/Object(react_jsx_dev_runtime__WEBPACK_IMPORTED_MODULE_7__["jsxDEV"])(_components_Page__WEBPACK_IMPORTED_MODULE_6__["default"], {
     children: [/*#__PURE__*/Object(react_jsx_dev_runtime__WEBPACK_IMPORTED_MODULE_7__["jsxDEV"])(_pages___WEBPACK_IMPORTED_MODULE_3__["Profile"], {
-      viewer: queryResult.viewer
+      viewer: queryResult === null || queryResult === void 0 ? void 0 : queryResult.viewer
     }, void 0, false, {
       fileName: _jsxFileName,
       lineNumber: 41,
