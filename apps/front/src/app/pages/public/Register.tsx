@@ -1,14 +1,13 @@
 import GithubButton from 'react-github-login-button';
 import { useHistory } from 'react-router';
 import Page from '../../components/Page';
-import { githubProvider } from '../../firebase-auth/authMethods';
-import socialMediaAuth from '../../firebase-auth/authService';
+import gitHubAuth from '../../services/auth/authService';
 
 const Register = () => {
   const history = useHistory();
 
   const handdleClick = async () => {
-    const res = await socialMediaAuth(githubProvider);
+    const res = await gitHubAuth();
     console.log(res);
     history.push('/');
   };

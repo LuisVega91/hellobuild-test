@@ -1,0 +1,36 @@
+export interface IRepository {
+  totalCount?: string;
+  id?: string;
+  name?: string;
+  nameWithOwner?: string;
+  url?: string;
+  stargazerCount?: string;
+  description?: string;
+  owner?: {
+    avatarUrl?: string;
+    login?: string;
+  };
+};
+
+
+export interface IQueryResult {
+  data?: {
+    viewer?: {
+      login?: string;
+      name?: string;
+      email?: string;
+      url?: string;
+      avatarUrl?: string;
+      projects?: {
+        totalCount?: number;
+      };
+      followers?: {
+        totalCount?: number;
+      };
+      pullRequests?: {
+        totalCount?: number;
+      };
+      repositories?: IRepository;
+    };
+  };
+};

@@ -1,73 +1,42 @@
-import React from 'react';
-import { gql } from 'apollo-boost';
-import { useQuery } from '@apollo/react-hooks';
-import { filter } from 'graphql-anywhere';
-import { Link } from 'react-router-dom';
-import svgLink from '../assets/svg/link.svg';
-import svgStar from '../assets/svg/star.svg';
-import { Profile } from '../app/pages';
-// import { Languages } from "./Languages";
-
-const GITHUB_QUERY = gql`
-  {
-    viewer {
-      login
-      name
-      email
-      url
-      avatarUrl
-      projects {
-        totalCount
-      }
-      followers {
-        totalCount
-      }
-      pullRequests {
-        totalCount
-      }
-      repositories(last: 100) {
-        totalCount
-        nodes {
-          id
-          name
-          nameWithOwner
-          url
-          stargazerCount
-          description
-          owner {
-            avatarUrl
-            login
-          }
-        }
-      }
-    }
-  }
-`;
-
-interface IRepo {
-  id: string;
-  name: string;
-  nameWithOwner: string;
-  url: string;
-  stargazerCount: string;
-  description: string;
-  owner: {
-    avatarUrl: string;
-    login: string;
-  };
-}
+import React, { useEffect, useState } from 'react';
+import svgLink from '../../../assets/svg/link.svg';
+import svgStar from '../../../assets/svg/star.svg';
+import { Profile } from '../../pages/';
+import { IRepository } from './types';
+import { REPOSITORY_QUERY } from './queries';
+import { apolloClient } from './apollo-config';
 
 function Repository() {
-  const { data, loading, error } = useQuery(GITHUB_QUERY);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
+
+  const [ queryResult, setQueryResult ] = useState({})
+  const [ repositores, setRepositories ] = useState([])
+
+
+  useEffect(() => {
+    setLoading(true);
+
+    apolloClient
+      .query({
+        query: REPOSITORY_QUERY,
+      })
+      .then((result) => {
+        setQueryResult(result.data);
+        setRepositories(result.data.viewer.repositories.nodes);
+        setLoading(false);
+      })
+      .catch((error) => {
+        setError(error);
+      });
+  }, []);
 
   if (error) return <div>error...</div>;
-  if (loading || !data) return <div>loading...</div>;
-
-  // return <pre>{JSON.stringify(data, null, 2)}</pre>;
+  if (loading) return <div>loading...</div>;
 
   return (
     <div className="">
-      <Profile viewer={data.viewer}/>
+      <Profile data={queryResult} />
       <div className="overflow-x-auto">
         <table className="min-w-max w-full table-auto">
           <thead>
@@ -79,8 +48,11 @@ function Repository() {
             </tr>
           </thead>
           <tbody className="text-gray-600 text-sm font-light">
-            {data.viewer.repositories.nodes.map((repo: IRepo) => (
-              <tr key={repo.id} className="border-b border-gray-200 hover:bg-gray-100">
+            {repositores.map((repo: IRepository) => (
+              <tr
+                key={repo.id}
+                className="border-b border-gray-200 hover:bg-gray-100"
+              >
                 <td className="py-3 px-6 text-left whitespace-nowrap">
                   <div className="flex items-center">
                     <div className="mr-2">

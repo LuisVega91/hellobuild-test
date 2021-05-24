@@ -2,50 +2,20 @@ import svgPullRequest from '../../../assets/svg/pull-request.svg';
 import svgRepository from '../../../assets/svg/repository.svg';
 import svgProject from '../../../assets/svg/project.svg';
 import svgFollowers from '../../../assets/svg/followers.svg';
+import { IQueryResult } from '../../services/queries/types';
 
-interface IProfile {
-  viewer: {
-    login: string;
-    name: string;
-    email: string;
-    url: string;
-    avatarUrl: string;
-    projects: {
-      totalCount: number;
-    };
-    followers: {
-      totalCount: number;
-    };
-    pullRequests: {
-      totalCount: number;
-    };
-    repositories: {
-      totalCount: number;
-      id: string;
-      name: string;
-      nameWithOwner: string;
-      url: string;
-      stargazerCount: string;
-      description: string;
-      owner: {
-        avatarUrl: string;
-        login: string;
-      };
-    };
-  };
-}
-
-const Profile = ({ viewer }: IProfile) => {
+const Profile = ({ data }: IQueryResult ) => {
+  const viewer = data?.viewer;
   return (
     <>
       <div className="flex flex-row flex-wrap p-3">
         <div className="mx-auto w-2/3">
           <div className="rounded-lg shadow-lg bg-gray-600 w-full flex flex-row flex-wrap p-3 antialiased">
             <div className="md:w-1/3 w-full">
-              <a href={viewer.url} target="_blank" rel="noreferrer">
+              <a href={viewer?.url} target="_blank" rel="noreferrer">
                 <img
                   className="rounded-lg shadow-lg antialiased bg-card-img"
-                  src={viewer.avatarUrl}
+                  src={viewer?.avatarUrl}
                   alt=""
                 />
               </a>
@@ -53,18 +23,18 @@ const Profile = ({ viewer }: IProfile) => {
             <div className="md:w-2/3 w-full px-3 flex flex-row flex-wrap">
               <div className="w-full text-right text-gray-700 font-semibold relative pt-3 md:pt-0">
                 <div className="text-2xl text-white leading-tight">
-                  {viewer.name}
+                  {viewer?.name}
                 </div>
-                <a href={viewer.url} target="_blank" rel="noreferrer">
+                <a href={viewer?.url} target="_blank" rel="noreferrer">
                   <div className="text-normal text-gray-300 hover:text-gray-400 cursor-pointer">
                     <span className="border-b border-dashed border-gray-500 pb-1">
-                      {viewer.login}
+                      {viewer?.login}
                     </span>
                   </div>
                 </a>
-                <a href={viewer.url} target="_blank" rel="noreferrer">
+                <a href={viewer?.url} target="_blank" rel="noreferrer">
                   <div className="text-sm text-gray-300 hover:text-gray-400 cursor-pointer md:absolute pt-3 md:pt-0 bottom-0 right-0">
-                    <strong>email: </strong> {viewer.email}
+                    <strong>email: </strong> {viewer?.email}
                   </div>
                 </a>
               </div>
