@@ -5,34 +5,27 @@ import { Profile } from '../../pages/';
 import { IRepository } from './types';
 import { REPOSITORY_QUERY } from './queries';
 import { apolloClient } from './apollo-config';
+import { useDispatch, useSelector } from 'react-redux';
+import { fetchRepostore, selectAllRepostore } from '../../repostore.slice';
 
 function Repository() {
-
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
-  const [queryResult, setQueryResult] = useState({});
-  const initRepos: IRepository[] = []
-  const [repositores, setRepositories] = useState(initRepos);
+  // const [queryResult, setQueryResult] = useState({});
 
   const [repoToSearch, setRepoToSearch] = useState('');
 
-  useEffect(() => {
-    setLoading(true);
+  const dispatch = useDispatch();
+  const queryResult = useSelector(selectAllRepostore);
 
-    apolloClient
-      .query({
-        query: REPOSITORY_QUERY,
-      })
-      .then((result) => {
-        setQueryResult(result.data);
-        setRepositories(result.data.viewer.repositories.nodes);
-        setLoading(false);
-      })
-      .catch((error) => {
-        setError(error);
-      });
-  }, []);
+
+  const repositores = queryResult[0].viewer.repositories.nodes;
+  console.log(repositores);
+
+  useEffect(() => {
+    dispatch(fetchRepostore());
+  }, [dispatch]);
 
   const repoFiltered = () => {
     if (repoToSearch)
@@ -43,12 +36,12 @@ function Repository() {
     return repositores;
   };
 
-  if (error) return <div>error...</div>;
-  if (loading) return <div>loading...</div>;
+
+
 
   return (
     <div className="">
-      <Profile data={queryResult} />
+      <Profile data={queryResult[0]} />
 
       <div className="box pt-6">
         <div className="box-wrapper">

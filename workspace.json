@@ -38,7 +38,10 @@
             "polyfills": "apps/front/src/polyfills.ts",
             "tsConfig": "apps/front/tsconfig.app.json",
             "assets": ["apps/front/src/favicon.ico", "apps/front/src/assets"],
-            "styles": ["apps/front/src/styles.css", "apps/front/src/app/tailwind.css"],
+            "styles": [
+              "apps/front/src/styles.css",
+              "apps/front/src/app/tailwind.css"
+            ],
             "scripts": [],
             "webpackConfig": "@nrwl/react/plugins/webpack"
           },
@@ -94,9 +97,8 @@
             "passWithNoTests": true
           }
         },
-
         "build-tailwind-css": {
-          "builder": "@nrwl/workspace:run-commands",
+          "executor": "@nrwl/workspace:run-commands",
           "outputs": [],
           "options": {
             "command": "npx tailwindcss-cli@latest build ./src/styles.css -o src/app/tailwind.css",

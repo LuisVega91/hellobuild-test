@@ -1,5 +1,4 @@
 export interface IRepository {
-  totalCount?: string;
   id?: string;
   name?: string;
   nameWithOwner?: string;
@@ -30,7 +29,10 @@ export interface IQueryResult {
       pullRequests?: {
         totalCount?: number;
       };
-      repositories?: IRepository;
+      repositories?: {
+        totalCount?: string;
+        nodes: IRepository[]
+      };
     };
   };
 };
