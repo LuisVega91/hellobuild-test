@@ -2,10 +2,10 @@ import svgPullRequest from '../../../assets/svg/pull-request.svg';
 import svgRepository from '../../../assets/svg/repository.svg';
 import svgProject from '../../../assets/svg/project.svg';
 import svgFollowers from '../../../assets/svg/followers.svg';
-import { IQueryResult } from '../../services/queries/types';
+import { IViewer } from '../../services/queries/types';
 
-const Profile = ({ data }: IQueryResult ) => {
-  const viewer = data?.viewer;
+const Profile = ( {viewer}: IViewer ) => {
+  console.log(viewer);
   return (
     <>
       <div className="flex flex-row flex-wrap p-3">

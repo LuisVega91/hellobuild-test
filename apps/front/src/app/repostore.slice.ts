@@ -1,4 +1,4 @@
-import { IRepository, IQueryResult } from './services/queries/types';
+import { IQueryResult } from './services/queries/types';
 import {
   createAsyncThunk,
   createEntityAdapter,
@@ -13,12 +13,12 @@ import { apolloClient } from './services/queries/apollo-config';
 export const REPOSTORE_FEATURE_KEY = 'repostore';
 
 
-export interface RepostoreState extends EntityState<IRepository> {
+export interface RepostoreState extends EntityState<IQueryResult> {
   loadingStatus: 'not loaded' | 'loading' | 'loaded' | 'error';
   error: string | undefined | null;
 }
 
-export const repostoreAdapter = createEntityAdapter<IRepository>();
+export const repostoreAdapter = createEntityAdapter<IQueryResult>();
 
 /**
  * Export an effect using createAsyncThunk from
@@ -40,10 +40,6 @@ export const repostoreAdapter = createEntityAdapter<IRepository>();
 export const fetchRepostore = createAsyncThunk(
   'repostore/fetchStatus',
   async (_, thunkAPI) => {
-
-    // return await apolloClient.query({
-    //   query: REPOSITORY_QUERY,
-    // });
 
     return await apolloClient.query({ query: REPOSITORY_QUERY });
 
@@ -72,7 +68,7 @@ export const repostoreSlice = createSlice({
       })
       .addCase(
         fetchRepostore.fulfilled,
-        (state: RepostoreState, action: any) => {
+        (state: RepostoreState, action: PayloadAction<any>) => {
           repostoreAdapter.setAll(state, action.payload);
           state.loadingStatus = 'loaded';
         }

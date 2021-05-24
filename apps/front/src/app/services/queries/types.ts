@@ -13,26 +13,30 @@ export interface IRepository {
 
 
 export interface IQueryResult {
-  data?: {
-    viewer?: {
-      login?: string;
-      name?: string;
-      email?: string;
-      url?: string;
-      avatarUrl?: string;
-      projects?: {
-        totalCount?: number;
-      };
-      followers?: {
-        totalCount?: number;
-      };
-      pullRequests?: {
-        totalCount?: number;
-      };
-      repositories?: {
-        totalCount?: string;
-        nodes: IRepository[]
-      };
+  data?: IViewer;
+};
+
+
+export interface IViewer {
+  viewer?: {
+    login?: string;
+    name?: string;
+    email?: string;
+    url?: string;
+    avatarUrl?: string;
+    projects?: {
+      totalCount?: number;
+    };
+    followers?: {
+      totalCount?: number;
+    };
+    pullRequests?: {
+      totalCount?: number;
+    };
+    repositories?: {
+      totalCount?: string;
+      nodes: IRepository[]
     };
   };
 };
+
