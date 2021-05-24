@@ -1240,21 +1240,14 @@ const gitHubAuth = () => {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var firebase__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! firebase */ "../../../node_modules/firebase/dist/index.esm.js");
+/* harmony import */ var _environments_environment__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../../environments/environment */ "./environments/environment.ts");
+/* harmony import */ var firebase__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! firebase */ "../../../node_modules/firebase/dist/index.esm.js");
 
-const firebaseConfig = {
-  apiKey: "AIzaSyBd60-uwes3-qQCx3XI0KjN4AXl0NsVp1s",
-  authDomain: "technicaltests-b3a1a.firebaseapp.com",
-  projectId: "technicaltests-b3a1a",
-  storageBucket: "technicaltests-b3a1a.appspot.com",
-  messagingSenderId: "4308301183",
-  appId: "1:4308301183:web:2df1c3e5cc99d55ee2964a",
-  measurementId: "G-X3ZFQLSDJR"
-}; // Initialize Firebase
+ // Initialize Firebase
 
-firebase__WEBPACK_IMPORTED_MODULE_0__["default"].initializeApp(firebaseConfig);
-firebase__WEBPACK_IMPORTED_MODULE_0__["default"].analytics();
-/* harmony default export */ __webpack_exports__["default"] = (firebase__WEBPACK_IMPORTED_MODULE_0__["default"]);
+firebase__WEBPACK_IMPORTED_MODULE_1__["default"].initializeApp(_environments_environment__WEBPACK_IMPORTED_MODULE_0__["environment"].firebaseConfig);
+firebase__WEBPACK_IMPORTED_MODULE_1__["default"].analytics();
+/* harmony default export */ __webpack_exports__["default"] = (firebase__WEBPACK_IMPORTED_MODULE_1__["default"]);
 
 /***/ }),
 
@@ -1666,6 +1659,42 @@ function SvgStar(_ref, svgRef) {
 var ForwardRef = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__["forwardRef"](SvgStar);
 /* harmony default export */ __webpack_exports__["default"] = ("data:image/svg+xml;base64,PHN2ZyBoZWlnaHQ9IjUxMXB0IiB2aWV3Qm94PSIwIC0xMCA1MTEuOTg2ODUgNTExIiB3aWR0aD0iNTExcHQiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+DQogIDxwYXRoDQogICAgZD0ibTUxMC42NTIzNDQgMTg1LjkwMjM0NGMtMy4zNTE1NjMtMTAuMzY3MTg4LTEyLjU0Njg3NS0xNy43MzA0NjktMjMuNDI1NzgyLTE4LjcxMDkzOGwtMTQ3Ljc3MzQzNy0xMy40MTc5NjgtNTguNDMzNTk0LTEzNi43Njk1MzJjLTQuMzA4NTkzLTEwLjAyMzQzNy0xNC4xMjEwOTMtMTYuNTExNzE4LTI1LjAyMzQzNy0xNi41MTE3MThzLTIwLjcxNDg0NCA2LjQ4ODI4MS0yNS4wMjM0MzggMTYuNTM1MTU2bC01OC40MzM1OTQgMTM2Ljc0NjA5NC0xNDcuNzk2ODc0IDEzLjQxNzk2OGMtMTAuODU5Mzc2IDEuMDAzOTA2LTIwLjAzMTI1IDguMzQzNzUtMjMuNDAyMzQ0IDE4LjcxMDkzOC0zLjM3MTA5NCAxMC4zNjcxODctLjI1NzgxMyAyMS43MzgyODEgNy45NTcwMzEgMjguOTA2MjVsMTExLjY5OTIxOSA5Ny45NjA5MzctMzIuOTM3NSAxNDUuMDg5ODQ0Yy0yLjQxMDE1NiAxMC42Njc5NjkgMS43MzA0NjggMjEuNjk1MzEzIDEwLjU4MjAzMSAyOC4wOTM3NSA0Ljc1NzgxMyAzLjQzNzUgMTAuMzI0MjE5IDUuMTg3NSAxNS45Mzc1IDUuMTg3NSA0LjgzOTg0NCAwIDkuNjQwNjI1LTEuMzA0Njg3IDEzLjk0OTIxOS0zLjg4MjgxM2wxMjcuNDY4NzUtNzYuMTgzNTkzIDEyNy40MjE4NzUgNzYuMTgzNTkzYzkuMzI0MjE5IDUuNjA5Mzc2IDIxLjA3ODEyNSA1LjA5NzY1NyAyOS45MTAxNTYtMS4zMDQ2ODcgOC44NTU0NjktNi40MTc5NjkgMTIuOTkyMTg3LTE3LjQ0OTIxOSAxMC41ODIwMzEtMjguMDkzNzVsLTMyLjkzNzUtMTQ1LjA4OTg0NCAxMTEuNjk5MjE5LTk3Ljk0MTQwNmM4LjIxNDg0NC03LjE4NzUgMTEuMzUxNTYzLTE4LjUzOTA2MyA3Ljk4MDQ2OS0yOC45MjU3ODF6bTAgMCINCiAgICBmaWxsPSIjZmZjMTA3IiAvPg0KPC9zdmc+DQo=");
 
+
+/***/ }),
+
+/***/ "./environments/environment.ts":
+/*!*************************************!*\
+  !*** ./environments/environment.ts ***!
+  \*************************************/
+/*! exports provided: environment */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "environment", function() { return environment; });
+// This file can be replaced during build by using the `fileReplacements` array.
+// When building for production, this file is replaced with `environment.prod.ts`.
+const environment = {
+  production: false,
+  // firebaseConfig: {
+  //   apiKey: "AIzaSyC5efKPODmCxzTM9Nnrey1xqhXs2YvYsyI",
+  //   authDomain: "tecnicaltests.firebaseapp.com",
+  //   projectId: "tecnicaltests",
+  //   storageBucket: "tecnicaltests.appspot.com",
+  //   messagingSenderId: "784310465074",
+  //   appId: "1:784310465074:web:26f7914f9f1f220edc822b",
+  //   measurementId: "G-JBB43V2EEC"
+  // }
+  firebaseConfig: {
+    apiKey: "AIzaSyBx4ufP0fHeZGY3vITnIEIjonpoQWsQdnA",
+    authDomain: "tecnicaltestprod.firebaseapp.com",
+    projectId: "tecnicaltestprod",
+    storageBucket: "tecnicaltestprod.appspot.com",
+    messagingSenderId: "262157011056",
+    appId: "1:262157011056:web:3a8dc22ab6fed2bb54ccb5",
+    measurementId: "G-GN0CWBG20M"
+  }
+};
 
 /***/ }),
 
