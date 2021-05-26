@@ -1,7 +1,6 @@
 import { useHistory } from 'react-router-dom';
 import GithubButton from 'react-github-login-button';
 import gitHubAuth from '../services/auth/authService';
-import Layout from '../components/Layout';
 
 const Login = () => {
   const history = useHistory();
@@ -12,7 +11,6 @@ const Login = () => {
     history.push('/home');
   };
   return (
-    <Layout>
       <div className="flex flex-col h-screen bg-gray-100">
         <div className="grid place-items-center mx-2 my-20 sm:my-auto">
           <div
@@ -33,7 +31,6 @@ const Login = () => {
           </div>
         </div>
       </div>
-    </Layout>
   );
 };
 

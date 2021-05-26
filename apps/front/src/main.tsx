@@ -7,7 +7,7 @@ import { configureStore, getDefaultMiddleware } from '@reduxjs/toolkit';
 import { Provider } from 'react-redux';
 
 import { REPOSTORE_FEATURE_KEY, repostoreReducer } from './app/repostore.slice';
-
+import { BrowserRouter } from 'react-router-dom';
 
 const store = configureStore({
   reducer: {
@@ -23,7 +23,9 @@ const store = configureStore({
 ReactDOM.render(
   <Provider store={store}>
     <StrictMode>
-      <App />
+      <BrowserRouter>
+        <App />
+      </BrowserRouter>
     </StrictMode>
   </Provider>,
   document.getElementById('root')

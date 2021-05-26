@@ -2,12 +2,12 @@ import React, { useEffect, useState } from 'react';
 import svgLink from '../../assets/svg/link.svg';
 import svgStar from '../../assets/svg/star.svg';
 import { useDispatch, useSelector } from 'react-redux';
-import Layout from '../components/Layout'
 import { fetchRepostore, selectAllRepostore } from '../repostore.slice';
 import { IRepository, IViewer } from '../services/queries/types';
 import Profile from './Profile';
+import Navigation from '../components/Navigation';
 
-const  Home = () => {
+const Home = () => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
@@ -16,8 +16,8 @@ const  Home = () => {
   const dispatch = useDispatch();
   const queryResult: IViewer | any = useSelector(selectAllRepostore)[0];
 
-
-  const repositores: IRepository[]|undefined = queryResult?.viewer?.repositories?.nodes;
+  const repositores: IRepository[] | undefined =
+    queryResult?.viewer?.repositories?.nodes;
   console.log(repositores);
 
   useEffect(() => {
@@ -33,11 +33,9 @@ const  Home = () => {
     return repositores;
   };
 
-
-
-
   return (
-    <Layout>
+    <>
+      <Navigation />
       <Profile viewer={queryResult?.viewer} />
 
       <div className="box pt-6">
@@ -133,8 +131,8 @@ const  Home = () => {
           </tbody>
         </table>
       </div>
-    </Layout>
+    </>
   );
-}
+};
 
 export default Home;
