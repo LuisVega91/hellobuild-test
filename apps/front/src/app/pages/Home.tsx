@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from 'react';
-import svgLink from '../../../assets/svg/link.svg';
-import svgStar from '../../../assets/svg/star.svg';
-import { Profile } from '../../pages/';
-import { IRepository, IViewer } from '../../services/queries/types';
+import svgLink from '../../assets/svg/link.svg';
+import svgStar from '../../assets/svg/star.svg';
 import { useDispatch, useSelector } from 'react-redux';
-import { fetchRepostore, selectAllRepostore } from '../../repostore.slice';
-import Page from '../../components/Page';
+import Layout from '../components/Layout'
+import { fetchRepostore, selectAllRepostore } from '../repostore.slice';
+import { IRepository, IViewer } from '../services/queries/types';
+import Profile from './Profile';
 
 const  Home = () => {
   const [loading, setLoading] = useState(true);
@@ -37,7 +37,7 @@ const  Home = () => {
 
 
   return (
-    <Page >
+    <Layout>
       <Profile viewer={queryResult?.viewer} />
 
       <div className="box pt-6">
@@ -133,7 +133,7 @@ const  Home = () => {
           </tbody>
         </table>
       </div>
-    </Page>
+    </Layout>
   );
 }
 

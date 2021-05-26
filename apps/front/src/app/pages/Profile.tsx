@@ -1,8 +1,8 @@
-import svgPullRequest from '../../../assets/svg/pull-request.svg';
-import svgRepository from '../../../assets/svg/repository.svg';
-import svgProject from '../../../assets/svg/project.svg';
-import svgFollowers from '../../../assets/svg/followers.svg';
-import { IViewer } from '../../services/queries/types';
+import svgPullRequest from '../../assets/svg/pull-request.svg';
+import svgRepository from '../../assets/svg/repository.svg';
+import svgProject from '../../assets/svg/project.svg';
+import svgFollowers from '../../assets/svg/followers.svg';
+import { IViewer } from '../services/queries/types';
 
 const Profile = ( {viewer}: IViewer ) => {
   console.log(viewer);

@@ -1,12 +1,12 @@
 import React, { Children } from 'react';
-import Navigation from '../Navigation'
+import Navigation from './Navigation'
 
 
-    interface IPage {
+    interface ILayout {
         children : JSX.Element | JSX.Element[];
     }
 
-    const Page = ({ children }:IPage) => {
+    const Layout = ({ children }:ILayout) => {
 
         return  (
             <div>
@@ -15,4 +15,4 @@ import Navigation from '../Navigation'
             </div>)
     };
 
-export default Page
+export default Layout

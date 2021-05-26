@@ -1,7 +1,7 @@
 import { useHistory } from 'react-router-dom';
 import GithubButton from 'react-github-login-button';
-import Page from '../../components/Page';
-import gitHubAuth from '../../services/auth/authService';
+import gitHubAuth from '../services/auth/authService';
+import Layout from '../components/Layout';
 
 const Login = () => {
   const history = useHistory();
@@ -9,10 +9,10 @@ const Login = () => {
   const handdleClick = async () => {
     const res:any = await gitHubAuth();
     await localStorage.setItem('token', res.credential.accessToken);
-    history.push('/');
+    history.push('/home');
   };
   return (
-    <Page>
+    <Layout>
       <div className="flex flex-col h-screen bg-gray-100">
         <div className="grid place-items-center mx-2 my-20 sm:my-auto">
           <div
@@ -33,7 +33,7 @@ const Login = () => {
           </div>
         </div>
       </div>
-    </Page>
+    </Layout>
   );
 };
 

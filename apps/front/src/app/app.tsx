@@ -1,18 +1,17 @@
-import styles from './app.module.css';
-import { Route, BrowserRouter, Switch } from 'react-router-dom';
-import * as Pages from './pages';
+import { Route, BrowserRouter, Switch, Redirect } from 'react-router-dom';
 import { ApolloProvider } from '@apollo/client';
 import { apolloClient } from './services/queries/apollo-config';
+import Home from './pages/Home';
+import Login from './pages/Login';
 
 export function App() {
   return (
     <ApolloProvider client={apolloClient}>
       <BrowserRouter>
         <Switch>
-          <Route exact path="/" component={Pages.Home} />
-          <Route exact path="/login" component={Pages.Login} />
-          <Route exact path="/register" component={Pages.Register} />
-          <Route exact path="/profile" component={Pages.Profile} />
+          <Route exact path="/login" component={Login} />
+          <Route exact path="/home" component={Home} />
+          <Redirect to="/login" />
         </Switch>
       </BrowserRouter>
     </ApolloProvider>
